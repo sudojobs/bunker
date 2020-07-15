@@ -12,7 +12,7 @@ from   time import *
 
 xml_file="temp.xml"
 headers ={'Content-Type':'text/xml'}
-logging.basicConfig(filename='app.log', filemode='w',format='%(asctime)s - %(message)s', level=logging.INFO)
+logging.basicConfig(filename='app.log', filemode='w',format='%(asctime)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
@@ -174,6 +174,7 @@ def lcd_clear_local():
     lcd1.lcd_clear()
 
 def manage_log_file():
+    print("Manage_Log_file")
 #    #check_file_size;
 #    if more than 10MB :
 #        #check number of files:
@@ -225,6 +226,7 @@ while True:
       gpio_relay_off()
       state=0
       logging.info('System Info : Dispence : Done')
+      manage_log_file()
       continue
    elif(state==2):       
       lcd1.lcd_clear()
@@ -238,6 +240,7 @@ while True:
       print("========================================")
       logging.error('System Info : %s',msg)
       state=0
+      manage_log_file()
       continue
    else:
        lcd1.lcd_clear()
@@ -251,6 +254,7 @@ while True:
        print("========================================")
        logging.error('System Info : %s : %s',status,msg)
        state=0
+       manage_log_file()
        continue
 
  except KeyboardInterrupt:

@@ -37,7 +37,7 @@ log_message = " "
 # configure timeout/pertap and volume/tap
 #---------------------------------------
 
-tap1timeout = 30
-tap1volume  = 15
+tap_timeout = 30
+tap_volume  = 15
 
 

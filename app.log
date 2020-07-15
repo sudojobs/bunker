@@ -1,0 +1,11 @@
+2020-07-16 02:33:10,415 - INFO - Card No : dsfsdfsf
+2020-07-16 02:33:12,518 - INFO - Solenoid ON
+2020-07-16 02:33:24,419 - INFO - Solenoid OFF
+2020-07-16 02:33:24,419 - ERROR - 10 Timeout 
+2020-07-16 02:33:27,522 - INFO - Dispense done
+2020-07-16 02:33:32,057 - INFO - Card No : fsdfssdfdd
+2020-07-16 02:33:34,158 - INFO - Solenoid ON
+2020-07-16 02:33:46,072 - INFO - Solenoid OFF
+2020-07-16 02:33:46,073 - ERROR - 10 Timeout 
+2020-07-16 02:33:49,173 - INFO - Dispense done
+2020-07-16 02:33:52,449 - ERROR - System Exit

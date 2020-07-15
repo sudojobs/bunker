@@ -5,6 +5,9 @@
 flo=11
 sol=16
  
+#---------------------------------------
+# LCD ADDRESS 
+#---------------------------------------
 LCD_ADDRESS=0x27
 
 #---------------------------------------
@@ -17,8 +20,8 @@ lcd_pour_message  = "    Pour complete   "
 lcd_ctap_message  = "  Please close tap  "
 lcd_vout_message  = "    Enjoy Drink     "
 
-#lcd_strt_message  = "   Please tap card  "
-lcd_strt_message  = "  Not in service   "
+lcd_strt_message = "   Please tap card  "
+#lcd_strt_message  = "  Not in service   "
 lcd_left_message  = "  Time left to pour "
 
 lcd_left_blank_message   = "         "
@@ -37,7 +40,7 @@ log_message = " "
 # configure timeout/pertap and volume/tap
 #---------------------------------------
 
-tap_timeout = 30
-tap_volume  = 15
+tap_timeout = 10
+tap_volume  = 142
 
 

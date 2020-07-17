@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import os
 import xml.etree.ElementTree as ET
 import RPi.GPIO as GPIO
@@ -51,6 +52,7 @@ global count
 count  = 0
 done   = 0
 state  = 0
+maintenance_mode = 0 
 #---------------------------------------
 # GPIO Functions  
 #---------------------------------------
@@ -113,7 +115,7 @@ def flow_meter(volume,seconds,mid):
               else:
                   print ("Timeout of %02d Seconds" % (seconds))
                   gpio_relay_off() 
-                  sys_logger.info('Timeout %02d Seconds ',seconds)
+                  sys_logger.info('%d ml dispensed (%d pulses)',int(count*.70425),count)
                   lcd1.lcd_clear()
                   lcd1.lcd_display_string(cfg.lcd_tout_message, 2)           
                   time.sleep(3)
@@ -204,6 +206,8 @@ while True:
       if(cfg.bypass_card==0):
          card=raw_input()
       else:
+         print("Press Return...")
+         raw_input()
          card="01-00300-11984"
          time.sleep(2)
          print("----------------------------------------")
@@ -219,6 +223,7 @@ while True:
       print("----------------------------------------")
       if user_id in cfg.maintenance_id:
           state=3    
+          continue
       else:
           if(cfg.bypass_server==0):
              xml_file_create(cfg.machine_id,user_id)
@@ -227,7 +232,7 @@ while True:
           else:
              status="OK"
              print("----------------------------------------")
-             print( "Server Bypassed Status : " + OK )
+             print( "Server Bypassed Status : " + status )
              print("----------------------------------------")
           status_message = cfg.lcd_left_blank_message + status + cfg.lcd_right_blank_message
           print(status_message)

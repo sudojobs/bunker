@@ -118,8 +118,9 @@ def flow_meter(volume,seconds,mid):
               else:
                   print ("Timeout of %02d Seconds" % (seconds))
                   gpio_relay_off() 
-                  sys_logger.info('%d ml dispensed (%d pulses)',int(count*.70425),count)
+                  sys_logger.info('%d ml dispensed (%d pulses) ',int(count*.70425),count)
                   lcd1.lcd_clear()
+                  sys_logger.info("%02d seconds Time Up" % (seconds))
                   lcd1.lcd_display_string(cfg.lcd_tout_message, 2)           
                   time.sleep(3)
                   print("now exiting")

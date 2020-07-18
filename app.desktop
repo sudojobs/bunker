@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Bunker
+Comment=Python
+NoDisplay=true
+Exec=/usr/bin/lxterminal -e /home/pi/bunker/app.py

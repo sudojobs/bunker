@@ -86,7 +86,7 @@ def flow_meter(volume,seconds,mid):
     totalMilliLitres = 0
     flowMilliLitres  = 0
     oldTime          = 0
-    scount           = 30
+    scount           = seconds 
     count            = 0
     start =time.time()
     time.clock()    

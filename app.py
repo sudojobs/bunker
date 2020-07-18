@@ -13,6 +13,7 @@ import glob
 import logging
 import logging.handlers
 
+
 xml_file="temp.xml"
 headers ={'Content-Type':'text/xml'}
 
@@ -85,6 +86,7 @@ def flow_meter(volume,seconds,mid):
     totalMilliLitres = 0
     flowMilliLitres  = 0
     oldTime          = 0
+    scount           = 30
     count            = 0
     start =time.time()
     time.clock()    
@@ -103,13 +105,14 @@ def flow_meter(volume,seconds,mid):
                   init_lcd_local()
                   break
               elif(elapsed < seconds):
-                  elapsed = int((time.time()) - (start))
-                  value   = int(seconds) - int(elapsed)
-                  print(value)
+                  elapsed = time.time() - start
+                  value   = int((seconds) - (elapsed))
+                  scount=scount-1
+                  print(scount)
                   if(value < 0):
                       value =0
                   lcd1.lcd_clear()
-                  lcd1.lcd_display_string("    Time Left: " + str(value) , 2)                       
+                  lcd1.lcd_display_string("    Time Left: " + str(scount) , 2)  
                   time.sleep(1)
                   continue 
               else:

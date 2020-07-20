@@ -11,13 +11,13 @@ tap_volume  = 142  #Pulses(100ml/142pulses)
 #---------------------------------------
 # System Configs  
 #---------------------------------------
-machine_id   ="03"
-bypass_card  =1    #Default : 0
-bypass_server=1    #Default : 0
+machine_id   ="01"
+bypass_card  =0    #Default : 0
+bypass_server=0    #Default : 0
 #---------------------------------------
 # maintenance  
 #---------------------------------------
-maintenance_id =[252525, 525252]
+maintenance_id =["32875x", "525252"]
 #---------------------------------------
 # LCD ADDRESS 
 #---------------------------------------

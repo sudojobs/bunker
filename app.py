@@ -163,7 +163,7 @@ def auth_from_server():
     sys_logger.info('Server Authentication Start')
     with open(xml_file) as xml:
         # Give the object representing the XML file to requests.post.
-        r = requests.post('http://128.129.2.170:5001/webole.asp', data=xml)
+        r = requests.post('http://128.129.2.168:1001/webole.asp', data=xml)
     print("----------------------------------------")
     print("System Info: Server Authentication Done")
     print("----------------------------------------")
@@ -176,11 +176,11 @@ def auth_from_server():
        print("----------------------------------------")
        if status.text is not None: 
           print ("Server Info: Status  -> " + status.text)
-          sys_logger.info('Stauts : %s', status.txt)
+          sys_logger.info('Stauts : %s', status.text)
     if message is not None:
        if message.text is not None: 
           print ("Server Info: Message -> " + message.text)
-          sys_logger.info('Stauts : %s', message.txt)
+          sys_logger.info('Stauts : %s', message.text)
     print("----------------------------------------")
 
     if status is not None:
@@ -212,7 +212,7 @@ while True:
       else:
          print("Press Return...")
          raw_input()
-         card="01-00300-11984"
+         card="02-00300-32875"
          time.sleep(2)
          print("----------------------------------------")
          print( "Card Bypassed : " + card )
@@ -222,7 +222,7 @@ while True:
       user_id    = card[9:]
       tcflush(sys.stdin, TCIFLUSH)
       print("----------------------------------------")
-      print( "System Info: Machine ID : " + cfg.machine_id )
+      print( "System Info: Machine ID : " + str(cfg.machine_id) )
       print("System Info: User ID : " + user_id        )
       print("----------------------------------------")
       if user_id in cfg.maintenance_id:
@@ -245,7 +245,7 @@ while True:
           elif(status=="DM"):
              state=2
           else:
-             state=3
+             state=4
           continue
    elif(state==1):
       lcd1.lcd_clear()
@@ -282,29 +282,29 @@ while True:
          time.sleep(3)
          maintenance_mode=1
          state=0
-         break
+         continue 
       else:
          lcd1.lcd_clear()
          lcd1.lcd_display_string(cfg.mmode_off, 4)
          gpio_relay_off()
          print("========================================")
          print("Maintenance Mode OFF")
-         print('%d ml dispensed (%d pulses)',int(count*.70425),count)
+         print("%d ml dispensed (%d pulses)" % (int(count*.70425),count))
          print("========================================")
          sys_logger.info('Maintenance Mode OFF')
-         sys_logger.info('%d ml dispensed (%d pulses)',int(count*.70425),count)
+         sys_logger.info('%d ml dispensed (%d pulses)' , int(count*.70425),count)
          time.sleep(3)
          maintenance_mode=0
          count=0
          state=0
-         break
+         continue 
    else:
        lcd1.lcd_clear()
        lcd1.lcd_display_string(status, 2)
        lcd1.lcd_display_string(msg, 3)
        time.sleep(3)
        lcd1.lcd_clear()
-       lcd1.lcd_display_string(lcd_strt_message, 2)                
+       lcd1.lcd_display_string(cfg.lcd_strt_message, 2)                
        print("========================================")
        print("System Info : " + status + "  " + msg    )
        print("========================================")

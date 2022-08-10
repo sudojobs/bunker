@@ -3,4 +3,4 @@ Type=Application
 Name=Bunker
 Comment=Python
 NoDisplay=true
-Exec=/usr/bin/lxterminal -e /home/pi/bunker/app.py
+Exec=xterm -hold -e '/usr/bin/python /home/pi/bunker/app.py'
